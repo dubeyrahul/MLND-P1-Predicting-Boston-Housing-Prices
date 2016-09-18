@@ -1,5 +1,5 @@
 # Machine Learning Nanodegree Program-P1-Predicting-Boston-Housing-Prices
-This is the first project in Udacity's Machine Learning Nanodegree
+This is the first project in Udacity's Machine Learning Nanodegree based on Model exploration and Evaluation
 
 The problem statement being:
 The Boston housing market is highly competitive, and you want to be the best real estate agent in the area. 
