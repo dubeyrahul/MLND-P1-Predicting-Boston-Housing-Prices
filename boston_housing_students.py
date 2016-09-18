@@ -59,31 +59,32 @@ def explore_city_data(city_data):
 # Calculate standard deviation?
 
     size_of_data = housing_features.shape[0]
-    number_of_features = housing_features.shape[1]
-    minimum_target_value = housing_prices.min()
-    maximum_target_value = housing_prices.max()
-    mean_target_value = housing_prices.mean()
-    median_target_value = np.median(housing_prices)
-    std_target_value = housing_prices.std()
+    print "Size of dataset %d" % size_of_data
 
-    # print "Size of dataset %d" % size_of_data
-    # print "Number of features %d" % number_of_features
-    # print "Minimum target value %f" % minimum_target_value
-    # print "Maximum target value %f" % maximum_target_value
-    # print "Mean target value %f" % mean_target_value
-    # print "Median target value %f" %median_target_value
-    # print "Standard deviation of target value %f" %std_target_value
+    number_of_features = housing_features.shape[1]
+    print "Number of features %d" % number_of_features
+
+    minimum_target_value = housing_prices.min()
+    print "Minimum target value %f" % minimum_target_value
+
+    maximum_target_value = housing_prices.max()
+    print "Maximum target value %f" % maximum_target_value
+
+    mean_target_value = housing_prices.mean()
+    print "Mean target value %f" % mean_target_value
+
+    median_target_value = np.median(housing_prices)
+    print "Median target value %f" % median_target_value
+
+    std_target_value = housing_prices.std()
+    print "Standard deviation of target value %f" % std_target_value
 
 
 def performance_metric(label, prediction):
     '''Calculate and return the appropriate performance metric.'''
+
     return mean_squared_error(label, prediction)
-    ###################################
-    ### Step 2. YOUR CODE GOES HERE ###
-    ###################################
-
     # http://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics
-
 
 
 def split_data(city_data):
@@ -92,16 +93,7 @@ def split_data(city_data):
 
     X, y = city_data.data, city_data.target
 
-
-    ###################################
-    ### Step 3. YOUR CODE GOES HERE ###
-    ###################################
     #I split in the 70:30 ratio
-    # X, y = shuffle(X,y,random_state=0)
-    # X_train = X[:354]
-    # X_test = X[354:]
-    # y_train = y[:354]
-    # y_test = y[354:]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
     return X_train, y_train, X_test, y_test
@@ -196,10 +188,6 @@ def fit_predict_model(city_data):
 
     parameters = {'max_depth': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)}
 
-    ###################################
-    ### Step 4. YOUR CODE GOES HERE ###
-    ###################################
-
     # 1. Find the best performance metric
     # should be the same as your performance_metric procedure
     # http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html
@@ -218,7 +206,7 @@ def fit_predict_model(city_data):
     y = reg.predict(x)
     print "House: " + str(x)
     print "Prediction: " + str(y)
-    #print reg.best_params_
+    print reg.best_params
 
 def main():
     '''Analyze the Boston housing data. Evaluate and validate the
@@ -246,6 +234,5 @@ def main():
     #
     # # Tune and predict Model
     fit_predict_model(city_data)
-
 
 main()
